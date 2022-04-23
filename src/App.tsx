@@ -1,8 +1,8 @@
 import React from 'react'
-import Counter from './components/Counter'
+import Dog from './components/Dog'
 
 function App() {
-  return <Counter />
+  return <Dog />
 }
 
 export default App

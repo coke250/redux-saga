@@ -11,7 +11,7 @@ import { Provider } from 'react-redux'
 const sagaMiddleware = createSagaMiddleware()
 
 // 스토어 생성
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
 // saga middleware 실행
 sagaMiddleware.run(rootSaga)
