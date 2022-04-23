@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducerType } from '../modules'
-import { requestDog, requestDogError, requestDogSuccess } from '../modules/dog'
+import { fetchDog } from '../modules/dog'
 
 const Dog = () => {
   const dispatch = useDispatch()
@@ -8,24 +8,13 @@ const Dog = () => {
     (state: RootReducerType) => state.dog,
   )
 
-  const fetchDog = async () => {
-    try {
-      dispatch(requestDog())
-      const response = await fetch('https://dog.ceo/api/breeds/image/random')
-      const data = await response.json()
-      return dispatch(requestDogSuccess(data))
-    } catch (error) {
-      return dispatch(requestDogError())
-    }
-  }
-
   return (
     <div>
-      <button onClick={() => fetchDog()}>Show Dog</button>
+      <button onClick={() => dispatch(fetchDog())}>랜덤 강아지 사진</button>
       {loading ? (
-        <p>Loading...</p>
+        <p>로딩중...</p>
       ) : error ? (
-        <p>Error, try again</p>
+        <p>에러가 발생하였습니다, 다시 시도해주세요.</p>
       ) : (
         <p>
           <img src={url} alt="" />

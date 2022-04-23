@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { all } from 'redux-saga/effects'
 import counter, { increaseSaga, decreaseSaga } from './counter'
-import dog from './dog'
+import dog, { watchFetchDog } from './dog'
 
 const rootReducer = combineReducers({
   counter,
@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
 })
 
 export function* rootSaga() {
-  yield all([increaseSaga(), decreaseSaga()])
+  yield all([increaseSaga(), decreaseSaga(), watchFetchDog()])
 }
 
 export type RootReducerType = ReturnType<typeof rootReducer>
